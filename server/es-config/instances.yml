@@ -1,0 +1,7 @@
+instances:
+  - name: es-node
+    dns:
+      - es-node
+      - localhost
+    ip:
+      - 127.0.0.1

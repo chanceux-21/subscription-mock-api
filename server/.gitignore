@@ -1,0 +1,6 @@
+node_modules/
+.env
+*.db
+es-config/certs/*.key
+es-config/certs/*.crt
+es-config/certs/*.zip

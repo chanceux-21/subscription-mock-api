@@ -1,13 +1,16 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /app
 
+# Установка зависимостей
 COPY package*.json ./
-
 RUN npm install
 
+# Копирование исходного кода
 COPY . .
 
-EXPOSE 3000
+# Порт приложения
+EXPOSE 5000
 
+# Команда запуска
 CMD ["node", "server.js"]

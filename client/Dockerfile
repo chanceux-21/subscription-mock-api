@@ -1,20 +1,16 @@
-FROM node:18 AS build
+FROM node:18-alpine
+
 WORKDIR /app
 
-# Сначала копируем только package.json
+# Установка зависимостей
 COPY package*.json ./
-
-# Устанавливаем зависимости
 RUN npm install
 
-# Копируем остальные файлы
-COPY public ./public
-COPY src ./src
+# Копирование исходного кода
+COPY . .
 
-# Собираем приложение
-RUN npm run build
+# Порт приложения
+EXPOSE 3000
 
-# Финальный образ
-FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
+# Команда запуска
+CMD ["npm", "start"]

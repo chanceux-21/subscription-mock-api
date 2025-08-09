@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database');
+const db = require('../server/database');
 const { userSchema } = require('../utils/validationSchemas');
 
 router.post('/', (req, res) => {

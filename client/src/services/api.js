@@ -16,8 +16,6 @@ export const getSubscriptions = async (search = '') => {
   return axios.get(`${API_URL}/subscriptions?search=${search}`);
 };
 
-// Аутентификация (для примера, в реальном приложении нужно реализовать логин)
 export const login = async () => {
-  // В реальном приложении здесь будет запрос на эндпоинт аутентификации
   return Promise.resolve({ token: 'test_token' });
 };

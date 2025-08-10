@@ -1,16 +1,16 @@
+# client/Dockerfile
 FROM node:18-alpine
-
 WORKDIR /app
+COPY package*.json ./
 
 # Установка зависимостей
-COPY package*.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
-# Копирование исходного кода
+# Создание пользователя
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN chown -R appuser:appgroup /app
+USER appuser
+
 COPY . .
-
-# Порт приложения
 EXPOSE 3000
-
-# Команда запуска
 CMD ["npm", "start"]
